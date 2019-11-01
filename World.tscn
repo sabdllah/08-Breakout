@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ScriptsBall.gd" type="Script" id=1]
+[ext_resource path="res://Assets/58-Breakout-Tiles.png" type="Texture" id=2]
+[ext_resource path="res://ScriptPaddle.gd" type="Script" id=3]
+[ext_resource path="res://Assets/52-Breakout-Tiles.png" type="Texture" id=4]
+[ext_resource path="res://Tile.tscn" type="PackedScene" id=5]
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 72.6277
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 177.35, 4.7715 )
+
+[node name="World" type="Node2D"]
+
+[node name="Ball" type="RigidBody2D" parent="."]
+mode = 2
+physics_material_override = SubResource( 3 )
+gravity_scale = 0.0
+linear_velocity = Vector2( 200, -200 )
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+position = Vector2( 2, 169 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2( 3, 173 )
+shape = SubResource( 1 )
+
+[node name="Paddle" type="KinematicBody2D" parent="."]
+position = Vector2( -44.75, 1417.38 )
+scale = Vector2( -146602, 11317.2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Paddle"]
+scale = Vector2( -7.17047e-06, -5.92552e-05 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+scale = Vector2( 1e-05, 0.001 )
+shape = SubResource( 2 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2( 10.125, 181.5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2( 172.855, -73.191 )
+scale = Vector2( 3.55209, 3.01523 )
+polygon = PoolVector2Array( -648.2, -426.6, -640.4, 540.6, -707.4, 538.6, -702, -430.8, 559, -431.8, 576.2, 534.2, 516.2, 537.2, 509.182, 100.055, 511.6, -431.4, 510.6, -358.4, -650.4, -359.4 )
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Grey Tiles" type="Node2D" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 1697, 23 )
+
+[node name="Tile2" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 1222, 19 )
+
+[node name="Tile3" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 768, 25 )
+
+[node name="Tile4" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 327, 24 )
+
+[node name="Tile5" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( -125, 19 )
+
+[node name="Tile6" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( -580, 15 )
+
+[node name="Tile7" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1019, 14 )
+
+[node name="Tile8" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1473, 13 )
+
+[node name="Tile9" parent="Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1919, 14 )
+
+[node name="Red Tiles" type="Node2D" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 1694, -159 )
+
+[node name="Tile2" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 1197.88, -172.5 )
+
+[node name="Tile3" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 779.375, -169.125 )
+
+[node name="Tile4" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 344.25, -170.75 )
+
+[node name="Tile5" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( -92, -176.5 )
+
+[node name="Tile6" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( -554.875, -187 )
+
+[node name="Tile7" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1014.25, -181 )
+
+[node name="Tile8" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1466.25, -190.625 )
+
+[node name="Tile9" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( -1913.62, -174.5 )
+
+[node name="Blue Tiles" type="Node2D" parent="Tiles"]
